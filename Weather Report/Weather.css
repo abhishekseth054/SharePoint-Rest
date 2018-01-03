@@ -1,0 +1,76 @@
+﻿#weatherReport {
+    float: left;
+    background: #fff;
+    box-shadow: 0px 0px 50px hsla(0,0%,0%,0.3);
+}
+
+    #weatherReport .weather_item {
+        padding: 15px;
+        border-bottom: 1px solid #bebebe;
+    }
+
+        #weatherReport .weather_item h2 {
+            margin-top: 0;
+        }
+
+        #weatherReport .weather_item .avg_temp {
+            font-size: 35px;
+        }
+
+        #weatherReport .weather_item .region {
+            font-size: 20px;
+        }
+
+        #weatherReport .weather_item .weather_type {
+            font-size: 20px;
+            position: relative;
+            top: 7px;
+        }
+
+        #weatherReport .weather_item .nopadding {
+            padding: 0px;
+        }
+
+        #weatherReport .weather_item table {
+            width: 100%;
+        }
+
+        #weatherReport .weather_item .fa-long-arrow-right.down {
+            transform: rotate(90deg);
+            margin-left: 15px;
+        }
+
+        #weatherReport .weather_item .fa-long-arrow-right.up {
+            transform: rotate(-90deg);
+        }
+
+        #weatherReport .weather_item .high_low {
+            margin-top: 15px;
+        }
+
+        #weatherReport .weather_item table td, #weatherReport .weather_item table th {
+            border-bottom: 1px outset rgba(0, 0, 0, 0.12);
+            padding: 5px 0;
+        }
+
+        #weatherReport .weather_item .sunset_raise_cover img {
+            width: 37px;
+            position: absolute;
+            top: 15px;
+            left: 0;
+        }
+
+        #weatherReport .weather_item .sunset_raise {
+            margin-left: 46px;
+            margin-top: 13px;
+        }
+
+            #weatherReport .weather_item .sunset_raise p {
+                margin-bottom: 0;
+            }
+
+.innerpage_container .innerpage_leftcontent_inner table td:first-child {
+    background: transparent;
+    box-shadow: none;
+    padding: inherit;
+}

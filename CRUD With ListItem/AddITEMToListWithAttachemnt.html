@@ -1,0 +1,196 @@
+﻿<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<html>
+<label>Title</label>
+<input type="text" class="form-control" id="txtTitle">
+<br />
+<label>Name</label>
+<input type="text" class="form-control" id="txtName">
+<br />
+<label>Age</label>
+<input type="text" class="form-control" id="txtAge">
+<br />
+<label>Email ID</label>
+<input type="text" class="form-control" id="txtEmail">
+<br />
+<label>Phone N0.</label>
+<input type="text" class="form-control" id="txtContactNo" maxlength="10">
+<br />
+<label>Attachment</label>
+<input type="file" class="form-control" id="fileUpload">
+<label id="resumeFileError"></label>
+<br />
+
+<button class="btn btn-primary" id="btnSave" type="button">Save</button>
+</html>
+
+<script type="text/javascript">
+
+// JavaScript source code
+var listItemEntity;
+$(document).ready(function () {
+    listItemEntity = ListItemEntityName();
+    $('#btnSave').click(function () {
+        AddItemToList();
+    });
+});
+
+    function getFormDigest(orgurl) {
+        return $.ajax({
+            url: orgurl + "/_api/contextinfo",
+            method: "POST",
+            headers: { "Accept": "application/json; odata=verbose" }
+        });
+    }
+
+    function AddItemToList()
+    {
+        return getFormDigest(_spPageContextInfo.webAbsoluteUrl).then(function (data) {
+
+            return $.ajax({
+                url: _spPageContextInfo.webAbsoluteUrl + "/_api/lists/GetByTitle('TestList')/items",
+                type: "POST",
+                contentType: "application/json;odata=verbose",
+                data: JSON.stringify({
+                    '__metadata': { 'type': listItemEntity }, //LISTITEMENTITY NAME is always in "SP.Data.LISTNAMEListItem" Format
+                    'Title': $('#txtTitle').val(),
+                    'Name': $('#txtName').val(),
+                    'Age': $('#txtAge').val(),
+                    'EmailID':$('#txtEmail').val(),
+                    'ContactNo':$('#txtContactNo').val()
+                    //Image URL is HyperLink // not tested this
+                   /* 'Image_x0020_URL':{
+                                    '__metadata': { 'type': 'SP.FieldUrlValue' },
+                                    'Description': 'Template Url',
+                                    'Url': $("#txtimageUrl").val()
+                                    }*/
+                }),
+                headers: {
+                    "accept": "application/json;odata=verbose",
+                    "X-RequestDigest": data.d.GetContextWebInformation.FormDigestValue
+                },
+                success: function (result) {
+                    var itemID = result.d.ID;
+                    //***********************************************************//
+                    //HERE WE CAN WRITE CODE FOR ATTACHMENT
+                    alert("Item Saved");
+                    var parts = document.getElementById("fileUpload").value.split("\\");
+
+    var filename = parts[parts.length - 1];
+
+    var file = document.getElementById("fileUpload").files[0];
+
+    uploadFileSP("TestList", itemID, filename, file);
+                },
+                error: function failure() {
+                    alert("Fail to save");
+                }
+            });
+        });
+    }
+
+
+    function getFileBuffer(file) {
+
+    var deferred = $.Deferred();
+
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+
+        deferred.resolve(e.target.result);
+
+    }
+
+    reader.onerror = function (e) {
+
+        deferred.reject(e.target.error);
+
+    }
+
+    reader.readAsArrayBuffer(file);
+    return deferred.promise();
+
+}
+
+
+
+
+//Used to Add Attachemnt to List Item
+
+function uploadFileSP(listName, id, fileName, file) {
+
+    var deferred = $.Deferred();
+
+    getFileBuffer(file).then(
+
+  		function (buffer) {
+
+      		var bytes = new Uint8Array(buffer);
+
+      		var content = new SP.Base64EncodedByteArray();
+
+      		var queryUrl = _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getbytitle('" + listName + "')/items(" + id +
+
+			 ")/AttachmentFiles/add(FileName='" + file.name + "')";
+
+              $.ajax({
+
+                  url: queryUrl,
+
+                  type: "POST",
+
+                  processData: false,
+
+                  contentType: "application/json;odata=verbose",
+
+                  data: buffer,
+
+                  headers: {
+
+                      "accept": "application/json;odata=verbose",
+
+                      "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+
+                      "content-length": buffer.byteLength
+
+                  }, success: function(result)
+                  			{
+                  				alert("Attachment updated");
+                  				window.location= _spPageContextInfo.webAbsoluteUrl;
+                  			},
+
+                  error: function(result){console.log("Attachment Failure:" + error.status + "," + error.statusText);}
+
+              });
+
+          },
+
+            function (err) {
+
+                deferred.reject(err);
+
+            });
+
+    return deferred.promise();
+
+}
+
+
+function ListItemEntityName() {
+    var queryUrl = _spPageContextInfo.webAbsoluteUrl + "/_api/lists/getbytitle('TestList')?$select=ListItemEntityTypeFullName";
+    $.ajax({
+        url: queryUrl,
+        method: "GET",
+        headers: { "Accept": "application/json;odata=verbose" },
+        success: function GetEntityNameSuccess(data) {
+            listItemEntity = data.d.ListItemEntityTypeFullName;
+        },
+        error: function GetEntityNameFailure()
+        {
+            alert("Fail to get List Item entity");
+        }
+    });
+}
+
+</script>

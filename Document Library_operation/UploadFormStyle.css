@@ -1,0 +1,105 @@
+﻿#Ribbon\.Documents\.New{
+	display:none;
+}
+#Ribbon\.Library\.Actions-LargeMedium-1-1{
+	display:none;
+}
+.img-circle
+{
+	max-width: 50%;
+	max-height: 50%;
+}
+
+input[type=file] {
+    display: inline-block !important;
+    margin-left: 35px;
+    width: 50%;
+}
+.required
+{
+	color:red;
+}
+.form-control
+{
+	display:inline !important;
+	margin-left:50px;
+	border: 1px solid #337ab7;
+	color: black;
+	border-radius: 2px;
+}
+.modal-header {
+    min-height: 16.43px;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 0px;
+    background-color: #337ab7;
+}
+
+.modal-body {
+    position: relative;
+    padding: 5px 15px 5px 15px;
+}
+
+.modal-footer {
+    padding: 15px 15px 15px 15px;
+    text-align: center;
+    border-top: 0px;
+}
+
+.modal {
+    position: fixed;
+    top: 25%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}	
+.ms-rtestate-field h4, h4.ms-rteElement-H4 {
+    line-height: 1.6;
+    color: white;
+}
+input[type=file] {
+	padding: 5px 5px !important;
+}
+input[type=file] {
+	border: 1px solid #337ab7;
+    background-color: #fff;
+    background-color: rgba( 255,255,255,0.85 );
+    color: #444;
+}	
+.errorMsg
+{
+	display:none; 
+	color:red; 
+	font-weight:800;
+	margin-top: 5px;
+	font-style: italic;
+	margin-left:30%;
+	margin-bottom: 5px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 8px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 5px;
+}
+#sideNavBox {
+    margin-top: 20px !important;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.ms-inlineSearch-searchImgSpanBase {
+    margin-left: -2px;
+    margin-bottom: 2px;
+}
+.ms-core-pageTitle {
+    font-size: 30px;
+    font-weight:bold;
+}

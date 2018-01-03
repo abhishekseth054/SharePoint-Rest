@@ -1,0 +1,417 @@
+﻿
+#myBirthday .modal-dialog .modal-content .modal-header{
+    background-color: #FB7B5E;
+    text-align: center;
+    padding: 3px;
+}
+#myBirthday .modal-dialog .modal-content .modal-header h4{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 100;
+}
+#myBirthday .modal-dialog .modal-content .modal-body h2{
+    color: #F2795E;
+    text-align: center;
+    margin: 3px 0 2px;
+    font-weight: 100;
+    font-size: 20px;
+}
+#myBirthday .modal-body span, #myBirthday .modal-body p{
+    color: #16232B;
+    font-size: 14px;
+    margin: 0px;
+    font-weight: 500;
+}
+#myBirthday .modal-dialog .modal-footer input[type='button']{
+    background-color: #FB7B5E;
+    padding: 0px 15px;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 20px;
+    border: 0;
+    opacity: 1;
+    font-weight: normal;
+    float: none !important;
+    line-height: 1.5;
+ }
+
+#myBirthday .modal-dialog .modal-body ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+#myBirthday .modal-dialog .modal-body ul li{
+    padding: 0;
+    border: 2px solid rgba(204, 204, 204, 0.42);
+    height: 107px;
+    width: 107px;
+    overflow: hidden;
+    float: left;
+    margin: 0 3px 3px;
+}
+#myBirthday .modal-dialog .modal-body ul li img{
+    width: 100%;
+    height: auto;
+}
+#myBirthday .modal-dialog .modal-body .modal-image-block{
+    border-radius: 50%;
+    width: 115px;
+    height: 115px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#myBirthday .modal-dialog .modal-body input[type='text']{
+    border: 1px solid #16232B;
+    color: #767676;
+    border-radius: 0;
+    height: 39px;
+    font-size: 15px;
+}
+.clearfix{
+    clear: both;
+}
+#myBirthday .modal-dialog .modal-body img#bday-image{
+    width: 100%;
+    height: auto;
+}
+#myBirthday .modal-dialog .modal-body p span{
+    font-size: 11px;
+    color: #767676;
+}
+#myBirthday .modal-dialog .modal-footer{
+    border: 0;
+    text-align: center;
+    padding: 0 0 10px;
+}
+
+#myBirthday .modal-body {
+    position: relative;
+    padding: 5px 15px 0;
+}
+#myBirthday .modal-dialog .modal-content{
+    border-radius: 0;
+    box-shadow: 0 5px 15px rgba(204, 204, 204, 0.44);
+    border: 0;
+}
+#myBirthday{
+    background: rgba(255, 255, 255, 0.5);
+    padding-right: 0px !important;
+}
+#myBirthday .modal-dialog .modal-body ul li input[type='radio']{
+    display: none;
+}
+
+#myBirthday .item > div{
+    border: 2px solid rgba(204, 204, 204, 0.92);
+}
+#myBirthday .item > div:hover{
+	border: 2px solid rgb(251, 123, 94);
+}
+
+#myBirthday .item .cover{
+/*    background: rgba(0, 0, 0, 0.63);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: -1px;*/
+    display: none;
+}
+#myBirthday .item > div{
+    position: relative;
+    margin: 5px 1px;
+    height:125px;
+    overflow:hidden;    
+}
+
+
+
+@media only screen and (max-width:1024px){
+	#myBirthday .item > div{
+		height:100px;
+	}	
+}
+@media only screen and (max-width:480px){
+	#myBirthday .item > div{
+		height:70px;
+	}	
+}
+
+@media only screen and (max-width:320px){
+	#myBirthday .item > div{
+		height:60px;
+	}	
+}
+
+
+#myBirthday .selectedimg{
+    background: rgba(0, 0, 0, 0.63) url("https://hccbplcoke.sharepoint.com/sites/HCCBPL-MyOrganization/SiteAssets/images/fatright.png") no-repeat center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute !important;
+    margin: -1px !important;
+    display: block !important;
+    z-index: 9;
+}
+#myBirthday .selectedimg{
+/*    background: url("images/fatright.png");*/
+}
+
+#myBirthday .modal-body .nav-arrows-left, #myBirthday .modal-body .nav-arrows-right{
+    position: relative;
+    cursor: pointer;
+}
+#myBirthday .modal-body .nav-arrows-left i#left-arrow{
+    position: absolute;
+    top: 117px;
+    font-size: 48px;
+    z-index: 9;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid #fff;
+    width: 25px;
+    text-align: center;
+}
+#myBirthday .modal-body .nav-arrows-right i#right-arrow{
+    position: absolute;
+    top: -208px;
+    right: 0;
+    font-size: 48px;
+    z-index: 9;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid #fff;
+    width: 25px;
+    text-align: center;
+}
+
+            .owl-next::before {
+/*                content: "\f104" !important;*/
+            }
+            .owl-prev:before {
+/*                content: "\f054" !important;*/
+            }
+
+
+#myBirthday .owl-carousel .owl-prev, #myBirthday .owl-carousel .owl-next {
+  /*  position: absolute;
+    top: -5px;
+    height: 100%;
+    border-radius: 0 !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    color: #383838 !important;*/
+}
+
+#myBirthday .owl-carousel .owl-prev {
+    left: -5px;
+}
+#myBirthday .owl-carousel .owl-next {
+    right: -5px;
+}
+#myBirthday .owl-carousel .owl-controls .nav_holder {
+    font-size: 40px;
+    color: #383838;
+    display: table;
+    height: 100%;
+}
+
+#myBirthday .owl-carousel .owl-controls .nav_holder .fa {
+    display: table-cell;
+    vertical-align: middle;
+}
+#myBirthday .owl-carousel .fa:before {
+    display: table-cell;
+    vertical-align: middle;
+    background: rgba(255,255,255,0.5);
+    padding: 4px 11px;
+}
+
+
+#myBirthday .owl-carousel .owl-prev, #myBirthday .owl-carousel .owl-next {
+    position: absolute;
+    top: -5px;
+    height: 100%;
+    border-radius: 0 !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    color: #383838 !important;
+}
+#myBirthday .owl-carousel .owl-prev {
+    left: -5px;
+}
+campaign_main .owl-carousel .owl-next {
+    right: -5px;
+}
+#myBirthday .owl-carousel .owl-controls .nav_holder {
+    font-size: 40px;
+    color: #383838;
+    display: table;
+    height: 100%;
+}
+
+#myBirthday .owl-carousel .owl-controls .nav_holder .fa {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#myBirthday textarea.form-control{
+	max-width: 100%;
+	height:55px;
+	max-height:55px;
+	box-shadow: none;
+	outline: 0;
+	border-radius: 0;
+	resize: none;
+}
+#myBirthday textarea.form-control:focus, #myBirthday textarea.form-control:hover{
+	box-shadow: 0;
+}
+
+@media only screen and (max-width:480px){
+#myBirthday .owl-carousel .owl-next{
+	right: -15px;	
+}
+#myBirthday .owl-carousel .owl-prev{
+	left: -15px;	
+}
+#myBirthday .owl-carousel .owl-controls .nav_holder .fa{
+	font-size:30px;
+}
+#myBirthday .selectedimg{
+	background-size: 60%;	
+}
+}
+
+.birthday_anniversary_tabs .tab-content #birthdayTab #divImage img,  #anniversaryTab #divImage img{
+	width: 100% !important;
+    height: auto !important;
+}
+.bdayC span.birthday_designation p, #anniversaryTab .AnniC span.birthday_designation p{
+	border: 0 !important;
+}
+.birthday_anniversary_tabs .bdayC a p, #anniversaryTab .AnniC a p{
+	margin-top: 14px;
+}
+#anniversaryTab .AnniC a:first-child p,
+div#bdayI a:first-child p:first-child{
+	border: 0px !important;
+}
+.bdayC a + p{
+	border: 1px solid red !important;
+}
+.birthday_anniversary_tabs{
+    box-shadow: 0px 0px 50px hsla(0,0%,0%,0.3);
+}
+
+
+
+#myBirthday .item{
+	  margin: 0px;
+	  cursor: pointer;
+	}
+	#myBirthday .item img{
+	    height: auto;
+	    min-height: 100%;
+	    width:100%;	
+	   }
+	#myBirthday .owl-controls .owl-pagination .owl-page{
+	    display: none !important;
+	}
+	#myBirthday .item input[type='radio']{
+	    display: none !important;
+	}
+	#myBirthday .owl-item{
+	/*                width: 115px !important;*/
+	}
+	#myBirthday .owl-buttons{
+	/*                position: absolute;
+	    width: 100%;
+	    top: 114px;*/
+	}
+	#myBirthday .owl-buttons .owl-prev{
+	    float:left;
+	}
+	#myBirthday .owl-buttons .owl-next{
+	    float: right;
+	}
+	#myBirthday .owl-theme .owl-controls{
+		    margin-top: 0 !important;
+	}
+	#myBirthday .form-group {
+    	margin-bottom: 6px;
+	}
+
+.owl-carousel {
+    display: block;
+}
+#myBirthday .modal-body .modal-image-block{
+	width: 130px;
+    height: 130px;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+#myBirthday .modal-body .modal-image-block img{
+	width: 100%;
+	height: auto;
+}
+.ms-dlgOverlay{
+	/*position: static !important;
+    background-color: transparent !important;*/
+    }
+#myBirthday .modal-body h2{
+	margin: 0;
+}
+@media (min-width: 768px){
+	.modal-dialog {
+	    width: 600px;
+	    margin: 10px auto;
+	}
+}
+@media only screen and (max-width: 480px){
+	#myBirthday .modal-dialog .modal-content .modal-header h4{
+	    font-size: 20px;
+	}
+	#myBirthday .modal-dialog .modal-body input[type='text']{
+		height: 35px;
+	}
+	#myBirthday .modal-dialog .modal-footer input[type='button']{
+		 font-size: 17px;
+		 font-weight: 100;
+	}
+	#myBirthday .modal-dialog .modal-body .modal-image-block{
+		width: 90px;
+    	height: 90px ;
+	}
+	#myBirthday .modal-header button span{
+		font-size: 18px;
+	}
+}
+
+
+
+#myBirthday .modal-header .close{
+	position: absolute;
+    right: 0;
+    top: 2px;
+    width: auto !important;
+    padding: 0;
+    margin: 0;
+    min-width: 1px;
+    padding: 6px;
+    font-weight: 100;
+    font-size: 20px;
+    text-shadow: none;
+}
+
+.events_result_area .landing_events h3.view_more a, .events_result_area .landing_events h3.view_more a:focus, .events_result_area .landing_events h3.view_more a:hover{
+	color: #0072c6 !important;
+}
+
+#Birthday-send-msg{
+	color: #ff655f;
+}
