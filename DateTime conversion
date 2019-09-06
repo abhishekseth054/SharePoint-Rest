@@ -1,0 +1,177 @@
+<!-- ================================================ Moment.js ================================================ -->
+	<script type="text/javascript" src="/moment.min.js"></script>
+	<!-- <script type="text/javascript" src="/moment-timezone.min.js"></script> -->
+	<script type="text/javascript" src="/moment-timezone-with-data.min.js"></script>
+
+<!-- ================================================================================================ -->
+
+	
+	// While Saving from local to server
+	
+	StartDate: (ModelObj.startDate != "Invalid Date" && ModelObj.startDate) ? convertLocalToServer(ModelObj.startDate) : null,
+	
+	//While Getting from Server to Local use "convertServerToLocal" 
+
+function convertLocalToServer(jsonDate) {
+    var temp = new Date(jsonDate);
+    var SPTimezone = _spPageContextInfo.SPTimezone;
+    var localToSPTimeZoneOffset = moment.tz(moment.tz.guess()).utcOffset() - moment.tz(SPTimezone).utcOffset();
+    temp.setTime(temp.getTime() + localToSPTimeZoneOffset * 60 * 1000);
+    return temp;
+};
+
+function convertServerToLocal(jsonDate) {
+    var temp = new Date(jsonDate);
+    var SPTimezone = _spPageContextInfo.SPTimezone;
+    var spToLocalTimeZoneOffset = moment.tz(SPTimezone).utcOffset() - moment.tz(moment.tz.guess()).utcOffset();
+    temp.setTime(temp.getTime() + spToLocalTimeZoneOffset * 60 * 1000);
+    return temp;
+};
+
+ // Date Time Conversion
+getRegionalsettingOffsetHome().then(function (data) {
+	$scope.SPTimezone = getTimeZone(data.d.Id);
+	$scope.localToServerTimeZoneOffset = moment.tz($scope.SPTimezone).utcOffset() - moment.tz(moment.tz.guess()).utcOffset();
+});
+	
+
+/****************************************************************************************************
+ * Function : getRegionalsettingOffsetHome                                                           *
+ * Descritption : This function is used get the timezone offset from regional setting                *
+ ******************************************************************************************************/
+var localToServerTimeZoneOffset;
+
+function getRegionalsettingOffsetHome() {
+    var deferred = jQuery.Deferred();
+    $.ajax({
+        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/RegionalSettings/TimeZone",
+        type: "GET",
+        dataType: "JSON",
+        headers: { "Accept": "application/json; odata=verbose", "Content-Type": "application/json;odata=verbose" },
+        success: function(data) {
+
+            if (data != null && data.d != null) {
+                var SPTimezone = getTimeZone(data.d.Id);
+                localToServerTimeZoneOffset = moment.tz(SPTimezone).utcOffset() - moment.tz(moment.tz.guess()).utcOffset();
+                return deferred.resolve(data);
+            }
+
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+    return deferred.promise();
+}
+
+/******************************************************************************************************
+ * Function : getTimeZone                                                            *
+ * Descritption : Method to get IANA Timezone Name from Timezone ID              *
+ ******************************************************************************************************/
+function getTimeZone(id) {
+    var TimeZoneName = {
+        "2": "Europe/London",
+        "3": "Europe/Paris",
+        "4": "Europe/Berlin",
+        "5": "Europe/Bucharest",
+        "6": "Europe/Budapest",
+        "7": "Europe/Kaliningrad",
+        "8": "America/Sao_Paulo",
+        "9": "America/Halifax",
+        "10": "America/New_York",
+        "11": "America/Chicago",
+        "12": "America/Denver",
+        "13": "America/Los_Angeles",
+        "14": "America/Anchorage",
+        "15": "Pacific/Honolulu",
+        "16": "Pacific/Apia",
+        "17": "Pacific/Auckland",
+        "18": "Australia/Brisbane",
+        "19": "Australia/Adelaide",
+        "20": "Asia/Tokyo",
+        "21": "Asia/Singapore",
+        "22": "Asia/Bangkok",
+        "23": "Asia/Kolkata",
+        "24": "Asia/Dubai",
+        "25": "Asia/Tehran",
+        "26": "Asia/Baghdad",
+        "27": "Asia/Jerusalem",
+        "28": "America/St_Johns",
+        "29": "Atlantic/Azores",
+        "30": "Etc/GMT+2",
+        "31": "Atlantic/Reykjavik",
+        "32": "America/Cayenne",
+        "33": "America/La_Paz",
+        "34": "America/Indianapolis",
+        "35": "America/Bogota",
+        "36": "America/Regina",
+        "37": "America/Mexico_City",
+        "38": "America/Phoenix",
+        "39": "Etc/GMT+12",
+        "40": "Pacific/Fiji",
+        "41": "Asia/Magadan",
+        "42": "Australia/Hobart",
+        "43": "Pacific/Port_Moresby",
+        "44": "Australia/Darwin",
+        "45": "Asia/Shanghai",
+        "46": "Asia/Novosibirsk",
+        "47": "Asia/Tashkent",
+        "48": "Asia/Kabul",
+        "49": "Africa/Cairo",
+        "50": "Africa/Johannesburg",
+        "51": "Europe/Moscow",
+        "53": "Atlantic/Cape_Verde",
+        "54": "Asia/Baku",
+        "55": "America/Guatemala",
+        "56": "Africa/Nairobi",
+        "57": "Europe/Warsaw",
+        "58": "Asia/Yekaterinburg",
+        "59": "Europe/Kiev",
+        "60": "America/Godthab",
+        "61": "Asia/Rangoon",
+        "62": "Asia/Katmandu",
+        "63": "Asia/Irkutsk",
+        "64": "Asia/Krasnoyarsk",
+        "65": "America/Santiago",
+        "66": "Asia/Colombo",
+        "67": "Pacific/Tongatapu",
+        "68": "Asia/Vladivostok",
+        "69": "Africa/Lagos",
+        "70": "Asia/Yakutsk",
+        "71": "Asia/Almaty",
+        "72": "Asia/Seoul",
+        "73": "Australia/Perth",
+        "74": "Asia/Riyadh",
+        "75": "Asia/Taipei",
+        "76": "Australia/Sydney",
+        "77": "America/Chihuahua",
+        "78": "America/Santa_Isabel",
+        "79": "Asia/Amman",
+        "80": "Asia/Beirut",
+        "81": "America/Manaus",
+        "82": "Asia/Tbilisi",
+        "83": "Africa/Windhoek",
+        "84": "Asia/Yerevan",
+        "85": "America/Buenos_Aires",
+        "86": "Africa/Casablanca",
+        "87": "Asia/Karachi",
+        "88": "America/Caracas",
+        "89": "Indian/Mauritius",
+        "90": "America/Montevideo",
+        "91": "America/Asuncion",
+        "92": "Asia/Kamchatka",
+        "93": "UTC",
+        "94": "Asia/Ulaanbaatar",
+        "95": "Etc/GMT+11",
+        "96": "Etc/GMT+2",
+        "97": "Etc/GMT-12",
+        "98": "Asia/Damascus",
+        "99": "Asia/Magadan",
+        "100": "Europe/Kaliningrad",
+        "101": "Europe/Istanbul",
+        "102": "Asia/Dhaka",
+        "103": "America/Bahia"
+
+    };
+    return TimeZoneName[id];
+}
